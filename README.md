@@ -4,16 +4,19 @@ Pipeline ETL desarrollado en PySpark para el procesamiento de datos de entregas 
 
 ---
 
-## 📌 Objetivo
+## 📌 Requisitos
 
-Procesar un dataset de entregas de productos aplicando:
+Antes de ejecutar el pipeline es necesario contar con:
 
-- Validaciones de calidad de datos
-- Filtros dinámicos por rango de fechas y país
-- Normalización de unidades
-- Clasificación de tipos de entrega
-- Enriquecimiento de métricas
-- Exportación particionada
+- Python 3.9 o superior
+- Apache Spark instalado y configurado (`spark-submit` disponible en PATH)
+- Java 11 o 17
+- Git
+
+Instalar dependencias de Python:
+
+```bash
+pip install -r requirements.txt
 
 ---
 
