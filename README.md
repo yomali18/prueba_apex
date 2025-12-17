@@ -106,16 +106,16 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 
 | Requerimiento | Implementación |
 |--------------|----------------|
-| Lectura de archivo CSV | `spark.read.csv()` en `src/main.py` |
-| Filtrado por rango de fechas | `filters/selection.py` utilizando parámetros de `OmegaConf` |
+| Lectura de archivo CSV | Lectura mediante `spark.read.csv()` en `src/main.py` |
+| Filtrado por rango de fechas | `filters/selection.py`, utilizando los parámetros `start-date` y `end-date` definidos vía `OmegaConf` |
 | Parametrización por país | Argumento `--country` en `run_etl.py` |
-| Uso de OmegaConf | Configuración centralizada en `config/base.yaml` |
+| Uso de OmegaConf | La configuración del flujo (paths, fechas, países, factores de conversión y tipos de entrega) se centraliza en `config/base.yaml` |
 | Particionado por fecha | `partitionBy("pais", "fecha_proceso")` en `io/writer.py` |
 | Normalización de unidades (CS → ST) | `transformers/units.py` |
 | Clasificación de tipos de entrega | `transformers/deliveries.py` |
-| Estandarización de nombres de columnas | `utils/snake_case.py` |
-| Detección y eliminación de anomalías |  `utils/initial_explore.py` y `validators/quality.py` |
-| Generación de métricas | `transformers/enrichment.py`|
+| Estandarización de nombres de columnas | Se aplica una transformación automática hacia la nomenclatura de `snake_case`en `utils/snake_case.py` inmediatamente después de la lectura del CSV, para asegurar consistencia semántica.|
+| Detección y eliminación de anomalías |  En `utils/initial_explore.py` se genera un perfil del dataset previo a cualquier filtrado, calculando número de filas, rango de fechas y en `validators/quality.py` se aplican reglas explícitas de calidad: exclusión de registros con `fecha_proceso` o `pais` nulos, precios negativos o nulos, y cantidades menores o iguales a cero.|
+| Generación de métricas | En `transformers/enrichment.py` se crea la métrica `total_value`, calculada como `cantidad_unidades * precio`, permitiendo tener un indicador para un análisis en el futuro.|
 
 ### DIAGRAMA DE FLUJO 
 ```mermaid
