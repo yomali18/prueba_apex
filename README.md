@@ -117,6 +117,25 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 | Detección y eliminación de anomalías |  En `utils/initial_explore.py` se genera un perfil del dataset previo a cualquier filtrado, calculando número de filas, rango de fechas y en `validators/quality.py` se aplican reglas explícitas de calidad: exclusión de registros con `fecha_proceso` o `pais` nulos, precios negativos o nulos, y cantidades menores o iguales a cero.|
 | Generación de métricas | En `transformers/enrichment.py` se crea la métrica `total_value`, calculada como `cantidad_unidades * precio`, permitiendo tener un indicador para un análisis en el futuro.|
 
+## FUNCIONES
+```
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+from pprint import pprint
+
+from src.utils.initial_explore import explore
+from src.utils.snake_case import snake_case
+
+from src.validators.quality import apply_quality_rules
+from src.filters.selection import apply_execution_filters
+
+from src.transformers.units import normalize_units
+from src.transformers.deliveries import classify_deliveries
+from src.transformers.enrichment import enrich_metrics
+
+from src.io.writer import write_output
+```
+
 ### DIAGRAMA DE FLUJO 
 ```mermaid
 flowchart TD
