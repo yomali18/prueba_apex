@@ -121,6 +121,6 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 | Normalización de unidades (CS → ST) | `transformers/units.py` |
 | Clasificación de tipos de entrega | `transformers/deliveries.py` |
 | Estandarización de nombres de columnas | `utils/snake_case.py` |
-| Detección y eliminación de anomalías | `validators/quality.py` |
-| Métricas y profiling de datos | `utils/initial_explore.py` y `utils/reporting.py` |
+| Detección y eliminación de anomalías |  `utils/initial_explore.py` y `validators/quality.py` |
+| Generación de métricas | `transformers/enrichment.py`|
 
