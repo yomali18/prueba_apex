@@ -1,4 +1,4 @@
-# prueba_apex
+# PRUEBA TECNICA
 
 Pipeline ETL desarrollado en PySpark para el procesamiento de datos de entregas de productos.  El flujo implementa buenas prácticas de ingeniería de datos: estandarización de columnas, control de calidad, filtrado parametrizado, transformación de unidades y generación de métricas.
 
@@ -61,7 +61,7 @@ spark-submit \
   --end-date 20250630 \
   --country PE
 ```
-
+El archivo `log4j2.properties` controla el nivel de logging de Spark y se incluye en el repositorio para garantizar ejecuciones reproducibles y salidas legibles durante el desarrollo
 
 ---
 ## 🗂️ Estructura 
@@ -105,4 +105,22 @@ El proyecto está organizado bajo un enfoque modular para facilitar mantenibilid
     │   └── snake_case.py
     └── validators
         └── quality.py
+
+```
+## EVALUACIÓN
+
+A continuación se describe cómo cada requerimiento solicitado es abordado dentro del pipeline:
+
+| Requerimiento | Implementación |
+|--------------|----------------|
+| Lectura de archivo CSV | `spark.read.csv()` en `src/main.py` |
+| Filtrado por rango de fechas | `filters/selection.py` utilizando parámetros de `OmegaConf` |
+| Parametrización por país | Argumento `--country` en `run_etl.py` |
+| Uso de OmegaConf | Configuración centralizada en `config/base.yaml` |
+| Particionado por fecha | `partitionBy("pais", "fecha_proceso")` en `io/writer.py` |
+| Normalización de unidades (CS → ST) | `transformers/units.py` |
+| Clasificación de tipos de entrega | `transformers/deliveries.py` |
+| Estandarización de nombres de columnas | `utils/snake_case.py` |
+| Detección y eliminación de anomalías | `validators/quality.py` |
+| Métricas y profiling de datos | `utils/initial_explore.py` y `utils/reporting.py` |
 
