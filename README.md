@@ -125,7 +125,7 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 | Generación de métricas | `transformers/enrichment.py`|
 
 ### FLUJO DEL PIPELINE 
-
+```mermaid
 flowchart TD
     A[CSV Raw Data] --> B[Read CSV]
     B --> C[Standardize Columns<br/>snake_case]
@@ -137,7 +137,7 @@ flowchart TD
     H --> I[Delivery Classification<br/>Routine vs Bonus]
     I --> J[Additional Metrics Enrichment]
     J --> K[Write Output<br/>Partitioned by country & date]
-
+```
 
 ### OUTPUT
 
