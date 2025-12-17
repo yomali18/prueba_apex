@@ -48,7 +48,7 @@ spark-submit run_etl.py --start-date 20250101 --end-date 20250630 --country PE
 
 El rango global de la `fecha_proceso` es `20250114` hasta `20250602`. Por lo tanto, `start-date` y `end-date` deberia estar entre esas fechas.
 
-Para facilitar la revisión del flujo y visualizar únicamente los outputs relevantes del ETL (esquemas, muestras de datos, métricas y reportes), el pipeline puede ejecutarse utilizando una configuración de logging reducida.
+Para facilitar la revisión del flujo y visualizar únicamente los outputs relevantes del ETL, el pipeline puede ejecutarse utilizando una configuración de logging reducida.
 
 ```bash
 spark-submit --conf "spark.driver.extraJavaOptions=-Dlog4j.configurationFile=log4j2.properties" run_etl.py --start-date 20250101 --end-date 20250630 --country PE
