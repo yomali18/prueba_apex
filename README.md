@@ -112,7 +112,7 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 | Uso de OmegaConf | La configuración del flujo (paths, fechas, países, factores de conversión y tipos de entrega) se centraliza en `config/base.yaml` |
 | Particionado por fecha | `partitionBy("pais", "fecha_proceso")` en `io/writer.py` |
 | Normalización de unidades (CS → ST) | `transformers/units.py` |
-| Clasificación de tipos de entrega | `transformers/deliveries.py` |
+| Clasificación de tipos de entrega | En `transformers/deliveries.py` se filtran únicamente los valores relevantes de tipo_entrega. ZPRE y ZVE1 se consideran entregas de rutina, mientras que Z04 y Z05 corresponden a bonificaciones. Otros valores se excluyen del output final. Asimismo, se generan las columnas `entrega_rutina_unidades` y `entrega_bonificacion_unidades`, asignando la cantidad normalizada según corresponda y cero en caso contrario. |
 | Estandarización de nombres de columnas | Se aplica una transformación automática hacia la nomenclatura de `snake_case`en `utils/snake_case.py` inmediatamente después de la lectura del CSV, para asegurar consistencia semántica.|
 | Detección y eliminación de anomalías |  En `utils/initial_explore.py` se genera un perfil del dataset previo a cualquier filtrado, calculando número de filas, rango de fechas y en `validators/quality.py` se aplican reglas explícitas de calidad: exclusión de registros con `fecha_proceso` o `pais` nulos, precios negativos o nulos, y cantidades menores o iguales a cero.|
 | Generación de métricas | En `transformers/enrichment.py` se crea la métrica `total_value`, calculada como `cantidad_unidades * precio`, permitiendo tener un indicador para un análisis en el futuro.|
