@@ -23,6 +23,19 @@ pip install -r requirements.txt
 
 La configuración del pipeline se define en un archivo YAML utilizando OmegaConf (`config/base.yaml`)
 
+```yaml
+paths:
+  input_csv: data/raw/product_deliveries.csv
+  output_base: data/processed
+
+date_range:
+  date_column: fecha_proceso
+  start_date: 20250101
+  end_date: 20250630
+
+filters:
+  country: PE
+```
 ---
 ## 🗂️ Estructura 
 El proyecto está organizado bajo un enfoque modular para facilitar mantenibilidad, escalabilidad y separación de responsabilidades dentro del flujo ETL. La siguiente estructura refleja los distintos componentes del pipeline, desde la configuración y validación de datos hasta la generación de salidas particionadas.
