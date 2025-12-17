@@ -17,7 +17,9 @@ Procesar un dataset de entregas de productos aplicando:
 
 ---
 
-## 🗂️ Estructura del proyecto
+## 🗂️ Estructura 
+El proyecto está organizado bajo un enfoque modular para facilitar mantenibilidad, escalabilidad y separación de responsabilidades dentro del flujo ETL. La siguiente estructura refleja los distintos componentes del pipeline, desde la configuración y validación de datos hasta la generación de salidas particionadas.
+
 ```text
 .
 ├── README.md
