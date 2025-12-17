@@ -124,19 +124,35 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 | Detección y eliminación de anomalías |  `utils/initial_explore.py` y `validators/quality.py` |
 | Generación de métricas | `transformers/enrichment.py`|
 
-### FLUJO DEL PIPELINE 
+### DIAGRAMA DE FLUJO 
 ```mermaid
 flowchart TD
-    A[CSV Raw Data] --> B[Read CSV]
-    B --> C[Standardize Columns<br/>snake_case]
-    C --> D[Initial Data Exploration<br/>row count, date range, nulls]
-    D --> E[Quality Rules Validation]
-    E --> F[Execution Filters<br/>date range & country]
-    F --> G[Post-filter Exploration]
-    G --> H[Unit Normalization<br/>CS → ST]
-    H --> I[Delivery Classification<br/>Routine vs Bonus]
-    I --> J[Additional Metrics Enrichment]
-    J --> K[Write Output<br/>Partitioned by country & date]
+
+    subgraph INGESTA
+        A[(CSV Raw Data)]
+        A --> B["spark.read.csv()"]
+    end
+
+    subgraph PREPROCESAMIENTO
+        B --> C["snake_case(df)<br/>Estandarización de columnas"]
+        C --> D["explore(df)<br/>Perfilado inicial"]
+    end
+
+    subgraph CALIDAD_Y_FILTRADO
+        D --> E["apply_quality_rules(df)<br/>Validación de reglas"]
+        E --> F["apply_execution_filters(df, cfg)<br/>Rango fechas + País"]
+        F --> G["explore(df)<br/>Perfilado post-filtros"]
+    end
+
+    subgraph TRANSFORMACIONES
+        G --> H["normalize_units(df)<br/>CS → ST"]
+        H --> I["classify_deliveries(df)<br/>Rutina vs Bonificación"]
+        I --> J["enrich_metrics(df)<br/>Métricas adicionales"]
+    end
+
+    subgraph OUTPUT
+        J --> K["write_output(df)<br/>CSV particionado<br/>pais / fecha_proceso"]
+    end
 ```
 
 ### OUTPUT
