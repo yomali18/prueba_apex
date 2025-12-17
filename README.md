@@ -124,3 +124,33 @@ A continuación se describe cómo cada requerimiento solicitado es abordado dent
 | Detección y eliminación de anomalías |  `utils/initial_explore.py` y `validators/quality.py` |
 | Generación de métricas | `transformers/enrichment.py`|
 
+### FLUJO DEL PIPELINE 
+
+flowchart TD
+    A[CSV Raw Data] --> B[Read CSV]
+    B --> C[Standardize Columns<br/>snake_case]
+    C --> D[Initial Data Exploration<br/>row count, date range, nulls]
+    D --> E[Quality Rules Validation]
+    E --> F[Execution Filters<br/>date range & country]
+    F --> G[Post-filter Exploration]
+    G --> H[Unit Normalization<br/>CS → ST]
+    H --> I[Delivery Classification<br/>Routine vs Bonus]
+    I --> J[Additional Metrics Enrichment]
+    J --> K[Write Output<br/>Partitioned by country & date]
+
+
+### OUTPUT
+
+El pipeline genera un dataset procesado listo para consumo analítico, almacenado en formato **CSV** y particionado para facilitar consultas por país y fecha de proceso.
+
+```text
+data/processed/
+├── pais=PE
+│   └── fecha_proceso=YYYYMMDD
+│       └── part-00000.csv
+├── pais=GT
+│   └── fecha_proceso=YYYYMMDD
+│       └── part-00000.csv
+```text
+
+
