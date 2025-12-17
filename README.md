@@ -17,7 +17,7 @@ Instalar dependencias de Python:
 
 ```bash
 pip install -r requirements.txt
-
+```
 ---
 
 ## 🗂️ Estructura 
