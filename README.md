@@ -18,5 +18,23 @@ Procesar un dataset de entregas de productos aplicando:
 ---
 
 ## 🗂️ Estructura del proyecto
-[tree.txt](tree.txt)
-
+```text
+.
+├── config
+│   └── base.yaml
+├── data
+│   ├── raw
+│   │   └── product_deliveries.csv
+│   └── processed
+│       ├── pais=PE
+│       │   └── fecha_proceso=20250114
+│       └── pais=GT
+│           └── fecha_proceso=20250513
+├── src
+│   ├── main.py
+│   ├── transformers
+│   ├── utils
+│   └── validators
+├── run_etl.py
+├── requirements.txt
+└── README.md
