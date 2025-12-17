@@ -3,7 +3,6 @@ from pyspark.sql.functions import col
 from pprint import pprint
 
 from src.utils.initial_explore import explore
-from src.utils.reporting import generate_data_report
 from src.utils.snake_case import snake_case
 
 from src.validators.quality import apply_quality_rules
