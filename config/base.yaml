@@ -1,0 +1,18 @@
+paths:
+  input_csv: "data/raw/product_deliveries.csv"
+  output_base: "data/processed"
+
+date_range:
+  start_date: null
+  end_date: null
+  date_column: "fecha_proceso"
+
+filters:
+  country: null
+
+unit_conversion:
+  cs_to_st_multiplier: 20
+
+delivery_types:
+  routine: ["ZPRE", "ZVE1"]
+  bonus: ["Z04", "Z05"]

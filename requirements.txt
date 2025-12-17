@@ -1,0 +1,12 @@
+# PySpark ETL Pipeline Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+pyspark==3.5.7
+omegaconf==2.3.0
+python-dateutil==2.8.2
+
+# Optional but recommended for better performance
+pyarrow>=14.0.0  # For faster Parquet I/O
+pandas>=2.0.0    # For schema inference and data validation
+
