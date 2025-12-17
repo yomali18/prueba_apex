@@ -1,0 +1,77 @@
+Listado de rutas de carpetas para el volumen OS
+El número de serie del volumen es 1202-B89F
+C:.
+¦   log4j2.properties
+¦   README.md
+¦   requirements.txt
+¦   run_etl.py
+¦   spark-submit
+¦   tree.txt
+¦   
++---config
+¦       base.yaml
+¦       
++---data
+¦   +---processed
+¦   ¦   +---pais=GT
+¦   ¦   ¦   +---fecha_proceso=20250513
+¦   ¦   ¦           .part-00000-c3e60f44-2e4b-4b46-872f-ecdeed2a5c95.c000.csv.crc
+¦   ¦   ¦           part-00000-c3e60f44-2e4b-4b46-872f-ecdeed2a5c95.c000.csv
+¦   ¦   ¦           
+¦   ¦   +---pais=PE
+¦   ¦       +---fecha_proceso=20250114
+¦   ¦               .part-00000-68a08c7a-f80c-44bd-a638-bd3a4c18d65b.c000.csv.crc
+¦   ¦               part-00000-68a08c7a-f80c-44bd-a638-bd3a4c18d65b.c000.csv
+¦   ¦               
+¦   +---raw
+¦           product_deliveries.csv
+¦           
++---docs
+¦       enunciado_prueba.pdf
+¦       
++---logs
++---src
+    ¦   main.py
+    ¦   
+    +---config
+    +---filters
+    ¦   ¦   selection.py
+    ¦   ¦   
+    ¦   +---__pycache__
+    ¦           selection.cpython-39.pyc
+    ¦           
+    +---io
+    ¦   ¦   writer.py
+    ¦   ¦   
+    ¦   +---__pycache__
+    ¦           writer.cpython-39.pyc
+    ¦           
+    +---transformers
+    ¦   ¦   deliveries.py
+    ¦   ¦   enrichment.py
+    ¦   ¦   units.py
+    ¦   ¦   
+    ¦   +---__pycache__
+    ¦           deliveries.cpython-39.pyc
+    ¦           enrichment.cpython-39.pyc
+    ¦           units.cpython-39.pyc
+    ¦           
+    +---utils
+    ¦   ¦   initial_explore.py
+    ¦   ¦   reporting.py
+    ¦   ¦   snake_case.py
+    ¦   ¦   
+    ¦   +---__pycache__
+    ¦           initial_explore.cpython-39.pyc
+    ¦           reporting.cpython-39.pyc
+    ¦           snake_case.cpython-39.pyc
+    ¦           
+    +---validators
+    ¦   ¦   quality.py
+    ¦   ¦   
+    ¦   +---__pycache__
+    ¦           quality.cpython-39.pyc
+    ¦           
+    +---__pycache__
+            main.cpython-39.pyc
+            
