@@ -20,6 +20,10 @@ Procesar un dataset de entregas de productos aplicando:
 ## 🗂️ Estructura del proyecto
 ```text
 .
+├── README.md
+├── requirements.txt
+├── run_etl.py
+├── log4j2.properties
 ├── config
 │   └── base.yaml
 ├── data
@@ -28,13 +32,28 @@ Procesar un dataset de entregas de productos aplicando:
 │   └── processed
 │       ├── pais=PE
 │       │   └── fecha_proceso=20250114
+│       │       └── part-00000.csv
 │       └── pais=GT
 │           └── fecha_proceso=20250513
-├── src
-│   ├── main.py
-│   ├── transformers
-│   ├── utils
-│   └── validators
-├── run_etl.py
-├── requirements.txt
-└── README.md
+│               └── part-00000.csv
+├── docs
+│   └── enunciado_prueba.pdf
+├── logs
+└── src
+    ├── main.py
+    ├── config
+    ├── filters
+    │   └── selection.py
+    ├── io
+    │   └── writer.py
+    ├── transformers
+    │   ├── units.py
+    │   ├── deliveries.py
+    │   └── enrichment.py
+    ├── utils
+    │   ├── initial_explore.py
+    │   ├── reporting.py
+    │   └── snake_case.py
+    └── validators
+        └── quality.py
+
